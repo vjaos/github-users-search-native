@@ -1,119 +1,128 @@
-package com.example.tochkaapp.data.remote.model;
+package com.example.tochkaapp.data.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class User {
-
     @SerializedName("login")
     @Expose
-    private String login;
+    public String login;
+
     @SerializedName("id")
     @Expose
-    private Integer id;
+    public Integer id;
+
     @SerializedName("avatar_url")
     @Expose
-    private String avatarUrl;
+    public String avatarUrl;
+
     @SerializedName("gravatar_id")
     @Expose
-    private String gravatarId;
+    public String gravatarId;
+
     @SerializedName("url")
     @Expose
-    private String url;
+    public String url;
+
     @SerializedName("html_url")
     @Expose
-    private String htmlUrl;
+    public String htmlUrl;
+
     @SerializedName("followers_url")
     @Expose
-    private String followersUrl;
+    public String followersUrl;
+
     @SerializedName("following_url")
     @Expose
-    private String followingUrl;
+    public String followingUrl;
+
     @SerializedName("gists_url")
     @Expose
-    private String gistsUrl;
+    public String gistsUrl;
+
     @SerializedName("starred_url")
     @Expose
-    private String starredUrl;
+    public String starredUrl;
+
     @SerializedName("subscriptions_url")
     @Expose
-    private String subscriptionsUrl;
+    public String subscriptionsUrl;
+
     @SerializedName("organizations_url")
     @Expose
-    private String organizationsUrl;
+    public String organizationsUrl;
+
     @SerializedName("repos_url")
     @Expose
-    private String reposUrl;
+    public String reposUrl;
+
     @SerializedName("events_url")
     @Expose
-    private String eventsUrl;
+    public String eventsUrl;
+
     @SerializedName("received_events_url")
     @Expose
-    private String receivedEventsUrl;
+    public String receivedEventsUrl;
+
     @SerializedName("type")
     @Expose
-    private String type;
+    public String type;
+
     @SerializedName("site_admin")
     @Expose
-    private Boolean siteAdmin;
+    public Boolean siteAdmin;
+
     @SerializedName("name")
     @Expose
-    private String name;
+    public Object name;
+
     @SerializedName("company")
     @Expose
-    private Object company;
+    public Object company;
+
     @SerializedName("blog")
     @Expose
-    private String blog;
+    public String blog;
+
     @SerializedName("location")
     @Expose
-    private String location;
+    public Object location;
+
     @SerializedName("email")
     @Expose
-    private Object email;
+    public Object email;
+
     @SerializedName("hireable")
     @Expose
-    private Object hireable;
+    public Object hireable;
+
     @SerializedName("bio")
     @Expose
-    private String bio;
+    public Object bio;
+
     @SerializedName("public_repos")
     @Expose
-    private Integer publicRepos;
+    public Integer publicRepos;
+
     @SerializedName("public_gists")
     @Expose
-    private Integer publicGists;
+    public Integer publicGists;
+
     @SerializedName("followers")
     @Expose
-    private Integer followers;
+    public Integer followers;
+
     @SerializedName("following")
     @Expose
-    private Integer following;
+    public Integer following;
+
     @SerializedName("created_at")
     @Expose
-    private String createdAt;
+    public String createdAt;
+
     @SerializedName("updated_at")
     @Expose
-    private String updatedAt;
-
-    public User() {
-
-    }
-
-    public User(final String userLogin,
-                final String name,
-                final String avatarUrl,
-                final String bio) {
-        this.login = userLogin;
-        this.name = name;
-        this.avatarUrl = avatarUrl;
-        this.bio = bio;
-    }
-
-
-    public User(final String userLogin) {
-        this.login = userLogin;
-    }
+    public String updatedAt;
 
     public String getLogin() {
         return login;
@@ -183,7 +192,7 @@ public class User {
         return siteAdmin;
     }
 
-    public String getName() {
+    public Object getName() {
         return name;
     }
 
@@ -195,7 +204,7 @@ public class User {
         return blog;
     }
 
-    public String getLocation() {
+    public Object getLocation() {
         return location;
     }
 
@@ -207,7 +216,7 @@ public class User {
         return hireable;
     }
 
-    public String getBio() {
+    public Object getBio() {
         return bio;
     }
 

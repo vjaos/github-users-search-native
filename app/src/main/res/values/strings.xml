@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TochkaApp</string>
+    <string name="search_for_some_users">Search for user</string>
+    <string name="search">Search</string>
 </resources>
