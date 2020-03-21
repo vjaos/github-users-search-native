@@ -1,0 +1,54 @@
+package com.example.tochkaapp.presentation.main;
+
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
+
+import com.example.tochkaapp.data.GithubServiceRepository;
+import com.example.tochkaapp.utils.Response;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
+
+/**
+ * ViewModel implementation for MainActivity
+ *
+ * @author Vyacheslav Osipov
+ * @see ViewModel
+ */
+public class MainActivityViewModel extends ViewModel {
+    private GithubServiceRepository repository;
+
+    private final CompositeDisposable disposable = new CompositeDisposable();
+
+    private final MutableLiveData<Response> responseData = new MutableLiveData<>();
+
+    private String searchQuery;
+
+    public MainActivityViewModel(GithubServiceRepository repository) {
+        this.repository = repository;
+    }
+
+    public MutableLiveData<Response> getResponseData() {
+        return responseData;
+    }
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+    }
+
+    public void searchUser(String searchQuery) {
+        this.searchQuery = searchQuery;
+
+        disposable.add(repository.searchUser(searchQuery)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(__ -> responseData.setValue(Response.loading()))
+                .subscribe(
+                        response -> responseData.setValue(Response.success(response)),
+                        throwable -> responseData.setValue(Response.error(throwable))
+                )
+        );
+    }
+}

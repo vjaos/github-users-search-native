@@ -2,4 +2,8 @@
     <string name="app_name">TochkaApp</string>
     <string name="search_for_some_users">Search for user</string>
     <string name="search">Search</string>
+    <string name="image_dec">User profile pic</string>
+    <string name="user_not_found">User not found</string>
+    <string name="connection_error">Connection error! Please wait 1 minute before make another request</string>
+    <string name="no_connection_error">Connection error! Please check your internet connection</string>
 </resources>
