@@ -34,7 +34,7 @@ public class MainActivityAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.user_search_layout, parent, false);
+        View view = layoutInflater.inflate(R.layout.user_item_layout, parent, false);
         return new MainActivityViewHolder(view);
     }
 

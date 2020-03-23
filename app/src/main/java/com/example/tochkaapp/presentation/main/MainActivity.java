@@ -1,5 +1,6 @@
 package com.example.tochkaapp.presentation.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -15,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tochkaapp.R;
 import com.example.tochkaapp.data.model.GithubResponse;
+import com.example.tochkaapp.presentation.userprofile.UserProfileActivity;
+import com.example.tochkaapp.utils.RecyclerViewScrollListener;
 import com.example.tochkaapp.utils.Response;
 import com.mancj.materialsearchbar.MaterialSearchBar;
 
@@ -30,11 +33,11 @@ import static com.example.tochkaapp.utils.Response.UPDATE;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final String TAG = MainActivity.class.getSimpleName();
     private MaterialSearchBar searchBar;
     private ProgressBar progressBar;
     private RecyclerView rvUser;
     private MainActivityAdapter mainAdapter;
+    private RecyclerViewScrollListener scrollListener;
 
     @Inject
     ViewModelProvider.Factory viewModelFactory;
@@ -80,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onSearchStateChanged(boolean enabled) {
-
             }
 
             @Override
@@ -105,14 +107,27 @@ public class MainActivity extends AppCompatActivity {
         rvUser.setLayoutManager(linearLayoutManager);
         rvUser.setHasFixedSize(true);
         rvUser.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
+        rvUser.setAdapter(mainAdapter);
 
-        //TODO init MainActivity scroll listener
+        scrollListener = new RecyclerViewScrollListener(linearLayoutManager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                loadNextPage(page + 1);
+            }
+        };
+
+        rvUser.addOnScrollListener(scrollListener);
 
         mainAdapter.setOnItemClickListener(((itemView, position) -> {
-            //TODO create action which will open activity for user profile
+            Intent intent = new Intent(MainActivity.this, UserProfileActivity.class);
+            intent.putExtra(UserProfileActivity.KEY_USERNAME, mainAdapter.getData(position).getLogin());
+            startActivity(intent);
         }));
     }
 
+    private void loadNextPage(int page) {
+        viewModel.loadNextPageUserData(page);
+    }
 
     private void searchUser(String searchQuery) {
         viewModel.searchUser(searchQuery);
@@ -126,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void renderDataState(GithubResponse data) {
         progressBar.setVisibility(View.GONE);
+
         if (data.getTotalCount() == 0) {
             Toast.makeText(this,
                     getResources().getString(R.string.user_not_found),

@@ -35,7 +35,7 @@ public class MainActivityViewModel extends ViewModel {
 
     @Override
     protected void onCleared() {
-        super.onCleared();
+        disposable.clear();
     }
 
     public void searchUser(String searchQuery) {
@@ -50,5 +50,18 @@ public class MainActivityViewModel extends ViewModel {
                         throwable -> responseData.setValue(Response.error(throwable))
                 )
         );
+    }
+
+    public void loadNextPageUserData(int page) {
+        if (searchQuery !=  null) {
+            disposable.add(repository.loadNextPageUserData(searchQuery, page)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(
+                            response -> responseData.setValue(Response.update(response)),
+                            throwable -> responseData.setValue(Response.error(throwable))
+                    )
+            );
+        }
     }
 }

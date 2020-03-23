@@ -6,123 +6,75 @@ import com.google.gson.annotations.SerializedName;
 public class User {
     @SerializedName("login")
     @Expose
-    public String login;
+    private String login;
 
     @SerializedName("id")
     @Expose
-    public Integer id;
+    private Integer id;
 
     @SerializedName("avatar_url")
     @Expose
-    public String avatarUrl;
+    private String avatarUrl;
 
     @SerializedName("gravatar_id")
     @Expose
-    public String gravatarId;
+    private String gravatarId;
 
     @SerializedName("url")
     @Expose
-    public String url;
+    private String url;
 
     @SerializedName("html_url")
     @Expose
-    public String htmlUrl;
+    private String htmlUrl;
 
     @SerializedName("followers_url")
     @Expose
-    public String followersUrl;
+    private String followersUrl;
 
     @SerializedName("following_url")
     @Expose
-    public String followingUrl;
+    private String followingUrl;
 
     @SerializedName("gists_url")
     @Expose
-    public String gistsUrl;
+    private String gistsUrl;
 
     @SerializedName("starred_url")
     @Expose
-    public String starredUrl;
+    private String starredUrl;
 
     @SerializedName("subscriptions_url")
     @Expose
-    public String subscriptionsUrl;
+    private String subscriptionsUrl;
 
     @SerializedName("organizations_url")
     @Expose
-    public String organizationsUrl;
+    private String organizationsUrl;
 
     @SerializedName("repos_url")
     @Expose
-    public String reposUrl;
+    private String reposUrl;
 
     @SerializedName("events_url")
     @Expose
-    public String eventsUrl;
+    private String eventsUrl;
 
     @SerializedName("received_events_url")
     @Expose
-    public String receivedEventsUrl;
+    private String receivedEventsUrl;
 
     @SerializedName("type")
     @Expose
-    public String type;
+    private String type;
 
     @SerializedName("site_admin")
     @Expose
-    public Boolean siteAdmin;
+    private Boolean siteAdmin;
 
-    @SerializedName("name")
+    @SerializedName("score")
     @Expose
-    public Object name;
-
-    @SerializedName("company")
-    @Expose
-    public Object company;
-
-    @SerializedName("blog")
-    @Expose
-    public String blog;
-
-    @SerializedName("location")
-    @Expose
-    public Object location;
-
-    @SerializedName("email")
-    @Expose
-    public Object email;
-
-    @SerializedName("hireable")
-    @Expose
-    public Object hireable;
-
-    @SerializedName("bio")
-    @Expose
-    public Object bio;
-
-    @SerializedName("public_repos")
-    @Expose
-    public Integer publicRepos;
-
-    @SerializedName("public_gists")
-    @Expose
-    public Integer publicGists;
-
-    @SerializedName("followers")
-    @Expose
-    public Integer followers;
-
-    @SerializedName("following")
-    @Expose
-    public Integer following;
-
-    @SerializedName("created_at")
-    @Expose
-    public String createdAt;
-
-    @SerializedName("updated_at")
-    @Expose
-    public String updatedAt;
+    private Double score;
 
     public String getLogin() {
         return login;
@@ -192,55 +144,7 @@ public class User {
         return siteAdmin;
     }
 
-    public Object getName() {
-        return name;
-    }
-
-    public Object getCompany() {
-        return company;
-    }
-
-    public String getBlog() {
-        return blog;
-    }
-
-    public Object getLocation() {
-        return location;
-    }
-
-    public Object getEmail() {
-        return email;
-    }
-
-    public Object getHireable() {
-        return hireable;
-    }
-
-    public Object getBio() {
-        return bio;
-    }
-
-    public Integer getPublicRepos() {
-        return publicRepos;
-    }
-
-    public Integer getPublicGists() {
-        return publicGists;
-    }
-
-    public Integer getFollowers() {
-        return followers;
-    }
-
-    public Integer getFollowing() {
-        return following;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
+    public Double getScore() {
+        return score;
     }
 }

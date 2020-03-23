@@ -2,6 +2,7 @@ package com.example.tochkaapp.data.remote;
 
 import com.example.tochkaapp.data.model.GithubResponse;
 import com.example.tochkaapp.data.model.User;
+import com.example.tochkaapp.data.model.UserProfile;
 
 import java.util.concurrent.TimeUnit;
 
@@ -9,7 +10,7 @@ import io.reactivex.Observable;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -21,7 +22,7 @@ public interface GithubService {
     String ENDPOINT = "https://api.github.com";
 
     @GET("/users/{username}")
-    Observable<User> getUser(@Path("username") String username);
+    Observable<UserProfile> getUser(@Path("username") String username);
 
     @GET("/search/users")
     Observable<GithubResponse> searchUsers(@Query("q") String searchQuery,
@@ -44,7 +45,7 @@ public interface GithubService {
                     .baseUrl(GithubService.ENDPOINT)
                     .client(okHttpClient)
                     .addConverterFactory(GsonConverterFactory.create())
-                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();
 
             return retrofit.create(GithubService.class);

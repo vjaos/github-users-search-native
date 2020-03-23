@@ -3,6 +3,7 @@ package com.example.tochkaapp.data.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GithubResponse {
@@ -16,7 +17,7 @@ public class GithubResponse {
 
     @SerializedName("items")
     @Expose
-    private List<User> items = null;
+    private List<User> items = new ArrayList<>();
 
     public Integer getTotalCount() {
         return totalCount;

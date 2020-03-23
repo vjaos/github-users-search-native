@@ -3,6 +3,7 @@ package com.example.tochkaapp.data;
 
 import com.example.tochkaapp.data.model.GithubResponse;
 import com.example.tochkaapp.data.model.User;
+import com.example.tochkaapp.data.model.UserProfile;
 import com.example.tochkaapp.data.remote.GithubService;
 
 import javax.inject.Inject;
@@ -37,7 +38,7 @@ public class GithubServiceRepository {
         return mGithubService.searchUsers(searchQuery, page, USERS_PER_PAGE);
     }
 
-    public Observable<User> getUserProfile(String userLogin) {
-        return mGithubService.getUser(userLogin);
+    public Observable<UserProfile> getUserProfile(String username) {
+        return mGithubService.getUser(username);
     }
 }
