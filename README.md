@@ -12,7 +12,7 @@ Simple application that allows you to search for users on Github.
 * A list that supports infinite scroll pagination (When you scroll to the end It will automatically load new amount of data - next 30 items)
 
 ### Dependecies 
-I used ffollowing dependecies:
+I used following dependecies:
 - [google-gson](https://github.com/google/gson)
 - [RecyclerView](https://developer.android.com/guide/topics/ui/layout/recyclerview)
 - [Retrofit](https://square.github.io/retrofit/)
