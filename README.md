@@ -2,7 +2,6 @@
 
 [![Build Status](https://travis-ci.com/vjaos/github-users-search-native.svg?branch=master)](https://travis-ci.com/vjaos/github-users-search-native)
 ## Description
-Test assignment for trainee position at Tochka Bank.
 Simple application that allows you to search for users on Github.
 
 ## Main features
